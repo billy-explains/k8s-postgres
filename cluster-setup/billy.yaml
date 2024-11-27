@@ -1,0 +1,14 @@
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+name: billy
+nodes:
+  - role: control-plane
+  - role: worker
+    labels:
+      tier: database
+    extraMounts:
+      - hostPath: /Users/eanez/Developer/BillyExplains/database-data
+        containerPath: /data
+    extraPortMappings:
+      - containerPort: 32345
+        hostPort: 32345
